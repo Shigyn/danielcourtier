@@ -1,7 +1,7 @@
 # Génère les 5 pages de l'aperçu Daniel Barcelo : python build.py
 import os
 ICI = os.path.dirname(os.path.abspath(__file__))
-V = '3'
+V = '4'
 URL = 'https://shigyn.github.io/danielcourtier/'
 
 NAV = [('index.html', 'Accueil'), ('prets.html', 'Prêts'), ('accompagnement.html', 'Accompagnement'),
@@ -10,7 +10,7 @@ NAV = [('index.html', 'Accueil'), ('prets.html', 'Prêts'), ('accompagnement.htm
 AVERT = 'Un crédit vous engage et doit être remboursé. Vérifiez vos capacités de remboursement avant de vous engager.'
 
 
-def page(fichier, titre, desc, corps):
+def page(fichier, titre, desc, corps, faq_ld='', prechargement=''):
     nav = ''.join('<a href="%s"%s>%s</a>' % (f, ' aria-current="page"' if f == fichier else '', n) for f, n in NAV)
     return f'''<!doctype html>
 <html lang="fr">
@@ -20,12 +20,18 @@ def page(fichier, titre, desc, corps):
 <title>{titre}</title>
 <meta name="description" content="{desc}">
 <meta name="robots" content="noindex, nofollow">
+<meta property="og:type" content="website"><meta property="og:locale" content="fr_FR">
+<meta property="og:site_name" content="Daniel Barcelo, courtier en prêt immobilier">
+<meta property="og:title" content="{titre}"><meta property="og:description" content="{desc}">
+<meta property="og:url" content="{URL}{'' if fichier == 'index.html' else fichier}"><meta property="og:image" content="{URL}og.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#1c2733">{prechargement}
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600&family=Young+Serif&display=swap" rel="stylesheet">
 <script>document.documentElement.classList.add('js')</script>
 <link rel="stylesheet" href="style.css?v={V}">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%231c2733'/%3E%3Ctext x='16' y='22' font-family='Georgia' font-size='17' fill='%23c9c2f2' text-anchor='middle'%3EDB%3C/text%3E%3C/svg%3E">
-<script type="application/ld+json">{{"@context":"https://schema.org","@type":"FinancialService","name":"Daniel Barcelo — Courtier en prêt immobilier","description":"Courtier en prêt immobilier à Valence : recherche du meilleur taux, assurance emprunteur, renégociation.","url":"{URL}","telephone":"+33775663739","areaServed":["Valence","Drôme","Ardèche","France"],"address":{{"@type":"PostalAddress","addressLocality":"Valence","postalCode":"26000","addressCountry":"FR"}}}}</script>
+<script type="application/ld+json">{{"@context": "https://schema.org", "@type": "FinancialService", "name": "Daniel Barcelo — Courtier en prêt immobilier", "description": "Courtier en prêt immobilier à Valence, 18 ans d'expérience en banque : recherche du meilleur taux, assurance emprunteur, renégociation. Tous profils, à distance partout en France.", "url": "{URL}", "telephone": "+33775663739", "image": "{URL}og.jpg", "address": {{"@type": "PostalAddress", "addressLocality": "Valence", "postalCode": "26000", "addressRegion": "Drôme", "addressCountry": "FR"}}, "areaServed": [{{"@type": "City", "name": "Valence"}}, {{"@type": "AdministrativeArea", "name": "Drôme"}}, {{"@type": "AdministrativeArea", "name": "Ardèche"}}, {{"@type": "Country", "name": "France"}}], "identifier": {{"@type": "PropertyValue", "propertyID": "ORIAS", "value": "25007674"}}, "founder": {{"@type": "Person", "name": "Daniel Barcelo", "jobTitle": "Courtier en prêt immobilier", "sameAs": ["https://www.linkedin.com/in/daniel-barcelo-037586366"]}}, "knowsAbout": ["Prêt immobilier", "Assurance emprunteur", "Rachat de crédit", "Renégociation de prêt", "Prêt à taux zéro", "Investissement locatif"]}}</script>{faq_ld}
 </head>
 <body>
 <div class="apercu"><b>Aperçu préparé par LocWeb</b> pour Daniel Barcelo : photos et vidéos d'illustration, à remplacer par les vôtres.</div>
@@ -77,8 +83,7 @@ ACCUEIL = f'''
   </div>
   <div class="conteneur">
     <div class="heros-texte entree">
-      <p class="surtitre">Courtier en prêt immobilier · Valence et à distance</p>
-      <h1>18 ans côté banque. <em>Maintenant, je suis de votre côté.</em></h1>
+      <h1><span class="h1-cle">Courtier en prêt immobilier à Valence et à distance</span>18 ans côté banque. <em>Maintenant, je suis de votre côté.</em></h1>
       <p class="chapo">Je mets les banques en concurrence, j'optimise votre budget d'achat et je vous décharge des démarches jusqu'à la signature chez le notaire. Primo-accédants, investisseurs, séniors : tous les profils.</p>
       <div class="heros-actions"><a class="bouton bouton-lavande" href="contact.html">Étudier mon projet</a><a class="bouton bouton-clair" href="tel:+33775663739">07 75 66 37 39</a></div>
     </div>
@@ -165,7 +170,7 @@ ACCUEIL = f'''
 PRETS = f'''
 <section class="tete-page">
   <div class="conteneur">
-    <div class="revele"><p class="surtitre">Les prêts</p><h1>Chaque projet a son montage.</h1></div>
+    <div class="revele"><p class="surtitre">Les prêts</p><h1>Prêt immobilier : chaque projet a son montage.</h1></div>
     <p class="chapo revele">Résidence principale, investissement, projet après 50 ans, rachat ou assurance : voici comment je présente chaque dossier aux banques pour obtenir les meilleures conditions.</p>
   </div>
 </section>
@@ -270,6 +275,19 @@ ACCOMP = f'''
     </div>
   </div>
 </section>
+<section class="section section-blanche">
+  <div class="conteneur faq-grille">
+    <div class="revele"><p class="surtitre">Questions fréquentes</p><h2>Ce qu'on me demande le plus souvent</h2></div>
+    <div class="faq">
+      <details class="revele"><summary>Combien coûte un courtier en prêt immobilier ?</summary><p>Rien tant que votre prêt n'est pas obtenu. Mes honoraires sont fixés dans un mandat signé dès le départ et ne sont dus qu'une fois le prêt accordé. Le premier échange est offert.</p></details>
+      <details class="revele"><summary>Un courtier obtient-il vraiment de meilleures conditions que ma banque ?</summary><p>Je présente votre dossier à plusieurs banques et je négocie le taux, mais aussi l'assurance emprunteur, les frais de dossier et la garantie. C'est le coût total du crédit qui compte, et c'est lui que je compare.</p></details>
+      <details class="revele"><summary>Peut-on emprunter après 60 ans ?</summary><p>Oui. La difficulté vient surtout de l'assurance : limites d'âge, questionnaire de santé, surprimes. Je cherche les contrats qui acceptent votre profil. Depuis la loi Lemoine, le questionnaire de santé est supprimé si la part assurée est inférieure à 200 000 € par personne et que le prêt se termine avant vos 60 ans.</p></details>
+      <details class="revele"><summary>Faut-il un apport pour obtenir un prêt immobilier ?</summary><p>Les banques demandent le plus souvent un apport couvrant au moins les frais de notaire et de garantie. Sans apport, c'est plus difficile mais pas impossible : tout dépend de vos revenus, de votre épargne et de la qualité du dossier.</p></details>
+      <details class="revele"><summary>Combien de temps faut-il pour obtenir un prêt ?</summary><p>Comptez quelques semaines entre un dossier complet et l'offre de prêt, puis les 10 jours de réflexion imposés par la loi avant de l'accepter. Un dossier complet dès le départ fait gagner beaucoup de temps.</p></details>
+      <details class="revele"><summary>Travaillez-vous uniquement à Valence ?</summary><p>Non. Je reçois à Valence et dans la Drôme, et j'accompagne mes clients partout en France à distance, par téléphone et en visio. Les documents s'échangent par e-mail.</p></details>
+    </div>
+  </div>
+</section>
 <section class="section">
   <div class="conteneur">
     <div class="encart revele">
@@ -323,7 +341,7 @@ QUI = '''
 CONTACT = '''
 <section class="tete-page">
   <div class="conteneur">
-    <div class="revele"><p class="surtitre">Contact</p><h1>Parlons de votre projet.</h1></div>
+    <div class="revele"><p class="surtitre">Contact</p><h1>Parlons de votre projet de prêt.</h1></div>
     <p class="chapo revele">Laissez-moi quelques informations : je vous rappelle sous 24 h ouvrées pour un premier échange offert.</p>
   </div>
 </section>
@@ -353,14 +371,23 @@ CONTACT = '''
 </div>
 '''
 
+FAQ_LD = '<script type="application/ld+json">' + '{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Combien coûte un courtier en prêt immobilier ?", "acceptedAnswer": {"@type": "Answer", "text": "Rien tant que votre prêt n\'est pas obtenu. Mes honoraires sont fixés dans un mandat signé dès le départ et ne sont dus qu\'une fois le prêt accordé. Le premier échange est offert."}}, {"@type": "Question", "name": "Un courtier obtient-il vraiment de meilleures conditions que ma banque ?", "acceptedAnswer": {"@type": "Answer", "text": "Je présente votre dossier à plusieurs banques et je négocie le taux, mais aussi l\'assurance emprunteur, les frais de dossier et la garantie. C\'est le coût total du crédit qui compte, et c\'est lui que je compare."}}, {"@type": "Question", "name": "Peut-on emprunter après 60 ans ?", "acceptedAnswer": {"@type": "Answer", "text": "Oui. La difficulté vient surtout de l\'assurance : limites d\'âge, questionnaire de santé, surprimes. Je cherche les contrats qui acceptent votre profil. Depuis la loi Lemoine, le questionnaire de santé est supprimé si la part assurée est inférieure à 200 000 € par personne et que le prêt se termine avant vos 60 ans."}}, {"@type": "Question", "name": "Faut-il un apport pour obtenir un prêt immobilier ?", "acceptedAnswer": {"@type": "Answer", "text": "Les banques demandent le plus souvent un apport couvrant au moins les frais de notaire et de garantie. Sans apport, c\'est plus difficile mais pas impossible : tout dépend de vos revenus, de votre épargne et de la qualité du dossier."}}, {"@type": "Question", "name": "Combien de temps faut-il pour obtenir un prêt ?", "acceptedAnswer": {"@type": "Answer", "text": "Comptez quelques semaines entre un dossier complet et l\'offre de prêt, puis les 10 jours de réflexion imposés par la loi avant de l\'accepter. Un dossier complet dès le départ fait gagner beaucoup de temps."}}, {"@type": "Question", "name": "Travaillez-vous uniquement à Valence ?", "acceptedAnswer": {"@type": "Answer", "text": "Non. Je reçois à Valence et dans la Drôme, et j\'accompagne mes clients partout en France à distance, par téléphone et en visio. Les documents s\'échangent par e-mail."}}]}' + '</script>'
+
 PAGES = [
     ('index.html', 'Daniel Barcelo | Courtier en prêt immobilier à Valence', 'Daniel Barcelo, courtier en prêt immobilier à Valence après 18 ans en banque : meilleur taux, assurance emprunteur, accompagnement jusqu\'au notaire, à distance partout en France.', ACCUEIL),
-    ('prets.html', 'Prêts immobiliers | Daniel Barcelo, courtier à Valence', 'Résidence principale, investissement locatif, renégociation, assurance emprunteur : le montage adapté à chaque projet.', PRETS),
+    ('prets.html', 'Prêt immobilier, rachat, assurance emprunteur | Daniel Barcelo, courtier à Valence', 'Résidence principale, investissement locatif, renégociation, assurance emprunteur : le montage adapté à chaque projet.', PRETS),
     ('accompagnement.html', 'Accompagnement | Daniel Barcelo, courtier à Valence', "Les six étapes d'un prêt immobilier avec Daniel Barcelo, du premier échange à la signature chez le notaire.", ACCOMP),
     ('qui-suis-je.html', 'Qui suis-je | Daniel Barcelo, courtier à Valence', 'Daniel Barcelo, courtier en prêt immobilier à Valence : ma façon de travailler.', QUI),
     ('contact.html', 'Contact | Daniel Barcelo, courtier à Valence', 'Demandez un rappel : premier échange offert, rien à payer avant l\'obtention de votre prêt.', CONTACT),
 ]
 for f, t, d, c in PAGES:
-    open(os.path.join(ICI, f), 'w', encoding='utf-8', newline='\n').write(page(f, t, d, c))
+    extra = {'faq_ld': FAQ_LD} if f == 'accompagnement.html' else {}
+    if f == 'index.html':
+        extra['prechargement'] = '\n<link rel="preload" as="image" href="videos/cles.webp">'
+    open(os.path.join(ICI, f), 'w', encoding='utf-8', newline='\n').write(page(f, t, d, c, **extra))
+# Plan du site, prêt pour le vrai domaine (URL à changer à la livraison)
+open(os.path.join(ICI, 'sitemap.xml'), 'w', encoding='utf-8', newline='\n').write(
+    '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' +
+    ''.join('  <url><loc>%s%s</loc></url>\n' % (URL, '' if f == 'index.html' else f) for f, _, _, _ in PAGES) + '</urlset>\n')
 open(os.path.join(ICI, 'robots.txt'), 'w', newline='\n').write('User-agent: *\nDisallow: /\n')
 print('ok', len(PAGES))
