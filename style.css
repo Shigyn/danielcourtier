@@ -51,6 +51,10 @@ p { max-width: 62ch }
 .burger { display: none; margin-left: auto; width: 44px; height: 44px; border: 0; background: none; cursor: pointer }
 .burger span { display: block; width: 22px; height: 2px; background: var(--nuit); margin: 5px auto; transition: transform .2s }
 
+.tel-entete { text-decoration: none; font-weight: 600; font-size: 15px; color: var(--nuit); white-space: nowrap; font-variant-numeric: tabular-nums }
+.tel-entete:hover { color: var(--lavande) }
+.appel-flottant { display: none; position: fixed; right: 16px; bottom: 16px; z-index: 30; align-items: center; gap: 8px; padding: 14px 20px; border-radius: 999px; background: var(--lavande); color: #fff; font-weight: 600; text-decoration: none; box-shadow: 0 10px 30px -8px rgba(28,39,51,.5) }
+
 /* Héros : la remise des clés en vidéo, le calcul par-dessus */
 .heros { position: relative; min-height: min(88vh, 820px); display: grid; align-items: center; padding: 90px 0 70px; overflow: hidden; background: var(--nuit) }
 .heros-fond { position: absolute; inset: 0 }
@@ -121,7 +125,7 @@ input[type=range]::-moz-range-thumb { width: 22px; height: 22px; border-radius: 
 .signature-nom { font-family: var(--serif); font-size: 24px; color: var(--nuit); margin-top: 22px }
 
 /* Profils */
-.profils { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px }
+.profils { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px }
 .profil { background: var(--blanc); border-radius: var(--r); overflow: hidden; text-decoration: none; display: flex; flex-direction: column; transition: transform .25s, box-shadow .25s }
 .profil:hover { transform: translateY(-4px); box-shadow: 0 20px 40px -24px rgba(28,39,51,.4) }
 .profil img { aspect-ratio: 4/3; object-fit: cover; width: 100% }
@@ -180,7 +184,7 @@ input[type=range]::-moz-range-thumb { width: 22px; height: 22px; border-radius: 
 .presentation { display: grid; grid-template-columns: .8fr 1.2fr; gap: 64px; align-items: start }
 .presentation-texte p + p { margin-top: 16px }
 .citation { font-family: var(--serif); font-size: clamp(24px, 2.6vw, 32px); line-height: 1.3; color: var(--nuit); border-left: 3px solid var(--lavande); padding-left: 26px; margin: 34px 0 }
-.valeurs { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px }
+.valeurs { display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px }
 .valeurs h3 { font-size: 22px; margin-bottom: 8px }
 .valeurs p { color: var(--gris); font-size: 16px }
 
@@ -195,7 +199,8 @@ input[type=range]::-moz-range-thumb { width: 22px; height: 22px; border-radius: 
 .choix-projet { border: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; grid-column: 1 / -1 }
 .choix-projet legend { margin-bottom: 10px }
 .choix-projet label { font-size: 15px; font-weight: 500; padding: 10px 16px; border-radius: 999px; border: 1.5px solid var(--pierre); cursor: pointer; color: var(--encre) }
-.choix-projet input { position: absolute; opacity: 0; pointer-events: none }
+.choix-projet label { position: relative }
+.choix-projet input { position: absolute; inset: 0; width: 100%; height: 100%; margin: 0; opacity: 0; pointer-events: none }
 .choix-projet input:checked + span { color: var(--nuit) }
 .choix-projet label:has(input:checked) { border-color: var(--lavande); background: var(--lavande-pale); color: var(--nuit) }
 .choix-projet label:has(input:focus-visible) { outline: 3px solid var(--lavande); outline-offset: 2px }
@@ -235,14 +240,16 @@ input[type=range]::-moz-range-thumb { width: 22px; height: 22px; border-radius: 
 
 /* Responsive */
 @media (max-width: 1020px) {
-  .nav, .entete .bouton { display: none }
+  .nav, .entete .bouton, .tel-entete { display: none }
+  .appel-flottant { display: inline-flex }
+  .profils { grid-template-columns: 1fr 1fr }
   .burger { display: block }
   .entete.ouvert .nav { display: flex; flex-direction: column; gap: 0; position: absolute; top: 74px; left: 0; right: 0; background: var(--papier); border-bottom: 1px solid var(--pierre); padding: 8px 20px 18px }
   .entete.ouvert .nav a { padding: 14px 0; border-bottom: 1px solid var(--pierre); font-size: 17px }
   .heros .conteneur, .tete-page .conteneur, .media-perso, .bloc-pret, .capacite, .presentation, .contact, .tete-section { grid-template-columns: 1fr }
   .bloc-pret:nth-of-type(even) .bloc-pret-photo { order: 0 }
   .leviers { grid-template-columns: 1fr 1fr }
-  .profils, .valeurs, .pieces { grid-template-columns: 1fr }
+  .valeurs, .pieces { grid-template-columns: 1fr 1fr }
   .pied-haut { grid-template-columns: 1fr }
   .etape { grid-template-columns: 60px 1fr; gap: 8px 20px }
   .etape p { grid-column: 2 }
@@ -254,6 +261,7 @@ input[type=range]::-moz-range-thumb { width: 22px; height: 22px; border-radius: 
   .heros { padding: 32px 0 56px }
   .calcul, .formulaire { padding: 24px 20px }
   .formulaire { grid-template-columns: 1fr }
+  .profils, .valeurs, .pieces { grid-template-columns: 1fr }
   .leviers { grid-template-columns: 1fr }
   .resultat { grid-template-columns: 1fr }
   .resultat-cout { grid-row: auto; grid-column: auto; text-align: left }

@@ -1,7 +1,7 @@
-# Génère les 5 pages de l'aperçu Daniel B. : python build.py
+# Génère les 5 pages de l'aperçu Daniel Barcelo : python build.py
 import os
 ICI = os.path.dirname(os.path.abspath(__file__))
-V = '1'
+V = '3'
 URL = 'https://shigyn.github.io/danielcourtier/'
 
 NAV = [('index.html', 'Accueil'), ('prets.html', 'Prêts'), ('accompagnement.html', 'Accompagnement'),
@@ -25,14 +25,15 @@ def page(fichier, titre, desc, corps):
 <script>document.documentElement.classList.add('js')</script>
 <link rel="stylesheet" href="style.css?v={V}">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%231c2733'/%3E%3Ctext x='16' y='22' font-family='Georgia' font-size='17' fill='%23c9c2f2' text-anchor='middle'%3EDB%3C/text%3E%3C/svg%3E">
-<script type="application/ld+json">{{"@context":"https://schema.org","@type":"FinancialService","name":"Daniel B. — Courtier en prêt immobilier","description":"Courtier en prêt immobilier à Valence : recherche du meilleur taux, assurance emprunteur, renégociation.","url":"{URL}","areaServed":["Valence","Drôme","Ardèche"],"address":{{"@type":"PostalAddress","addressLocality":"Valence","postalCode":"26000","addressCountry":"FR"}}}}</script>
+<script type="application/ld+json">{{"@context":"https://schema.org","@type":"FinancialService","name":"Daniel Barcelo — Courtier en prêt immobilier","description":"Courtier en prêt immobilier à Valence : recherche du meilleur taux, assurance emprunteur, renégociation.","url":"{URL}","telephone":"+33775663739","areaServed":["Valence","Drôme","Ardèche","France"],"address":{{"@type":"PostalAddress","addressLocality":"Valence","postalCode":"26000","addressCountry":"FR"}}}}</script>
 </head>
 <body>
-<div class="apercu"><b>Aperçu préparé par LocWeb</b> pour Daniel B. : photos et vidéos d'illustration, à remplacer par les vôtres.</div>
+<div class="apercu"><b>Aperçu préparé par LocWeb</b> pour Daniel Barcelo : photos et vidéos d'illustration, à remplacer par les vôtres.</div>
 <header class="entete">
   <div class="conteneur">
-    <a class="marque" href="index.html"><b>Daniel B.</b><small>Courtier en prêt immobilier · Valence</small></a>
+    <a class="marque" href="index.html"><b>Daniel Barcelo</b><small>Courtier en prêt immobilier · Valence</small></a>
     <nav class="nav" aria-label="Menu principal">{nav}</nav>
+    <a class="tel-entete" href="tel:+33775663739">07 75 66 37 39</a>
     <a class="bouton" href="contact.html">Être rappelé</a>
     <button class="burger" type="button" aria-label="Ouvrir le menu" aria-expanded="false"><span></span><span></span><span></span></button>
   </div>
@@ -44,19 +45,20 @@ def page(fichier, titre, desc, corps):
   <div class="conteneur">
     <div class="pied-haut">
       <div>
-        <a class="marque" href="index.html"><b>Daniel B.</b><small>Courtier en prêt immobilier · Valence</small></a>
-        <p style="margin-top:16px">Rendez-vous à Valence, chez vous ou en visio, partout dans la Drôme et l'Ardèche.</p>
+        <a class="marque" href="index.html"><b>Daniel Barcelo</b><small>Courtier en prêt immobilier · Valence</small></a>
+        <p style="margin-top:16px">Rendez-vous à Valence, chez vous ou en visio, partout en France.</p>
       </div>
       <div><h4>Le site</h4><ul>{''.join('<li><a href="%s">%s</a></li>' % (f, n) for f, n in NAV)}</ul></div>
-      <div><h4>Me joindre</h4><ul><li><a href="contact.html">Demander un rappel</a></li><li>Téléphone : <span class="a-completer">à ajouter</span></li><li>E-mail : <span class="a-completer">à ajouter</span></li></ul></div>
+      <div><h4>Me joindre</h4><ul><li><a href="contact.html">Demander un rappel</a></li><li><a href="tel:+33775663739">07 75 66 37 39</a></li><li>E-mail : <span class="a-completer">à ajouter</span></li></ul></div>
     </div>
     <div class="mentions">
       <p><strong>{AVERT}</strong></p>
-      <p>Daniel B., courtier en opérations de banque et en services de paiement (COBSP), immatriculé à l'ORIAS sous le n° <span class="a-completer">à compléter</span> (www.orias.fr). Activité soumise au contrôle de l'ACPR, 4 place de Budapest, 75436 Paris Cedex 09.</p>
+      <p>Daniel Barcelo EI, courtier en opérations de banque et en services de paiement (COBSP), immatriculé à l'ORIAS sous le n° 25007674 (www.orias.fr). SIRET : <span class="a-completer">à compléter</span>. Activité soumise au contrôle de l'ACPR, 4 place de Budapest, 75436 Paris Cedex 09.</p>
       <p>Aucun versement, de quelque nature que ce soit, ne peut être exigé d'un particulier avant l'obtention d'un ou plusieurs prêts d'argent.</p>
     </div>
   </div>
 </footer>
+<a class="appel-flottant" href="tel:+33775663739" aria-label="Appeler Daniel Barcelo au 07 75 66 37 39"><svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1z"/></svg>Appeler</a>
 <script src="app.js?v={V}" defer></script>
 </body>
 </html>
@@ -75,10 +77,10 @@ ACCUEIL = f'''
   </div>
   <div class="conteneur">
     <div class="heros-texte entree">
-      <p class="surtitre">Courtier en prêt immobilier à Valence</p>
-      <h1>Je mets les banques en concurrence. <em>Vous gardez la différence.</em></h1>
-      <p class="chapo">Je monte votre dossier, je le présente aux banques et je négocie le taux, l'assurance et les frais, jusqu'à la signature chez le notaire.</p>
-      <div class="heros-actions"><a class="bouton bouton-lavande" href="contact.html">Étudier mon projet</a><a class="bouton bouton-clair" href="accompagnement.html">Comment je travaille</a></div>
+      <p class="surtitre">Courtier en prêt immobilier · Valence et à distance</p>
+      <h1>18 ans côté banque. <em>Maintenant, je suis de votre côté.</em></h1>
+      <p class="chapo">Je mets les banques en concurrence, j'optimise votre budget d'achat et je vous décharge des démarches jusqu'à la signature chez le notaire. Primo-accédants, investisseurs, séniors : tous les profils.</p>
+      <div class="heros-actions"><a class="bouton bouton-lavande" href="contact.html">Étudier mon projet</a><a class="bouton bouton-clair" href="tel:+33775663739">07 75 66 37 39</a></div>
     </div>
     <form class="calcul entree-carte" data-calcul="mensualite" onsubmit="return false" aria-label="Calcul de mensualité">
       <h2>Votre mensualité, en direct</h2>
@@ -118,10 +120,10 @@ ACCUEIL = f'''
       <div><span class="lecture" aria-hidden="true"></span><strong>Votre vidéo de présentation</strong><small>Une minute face caméra : qui vous êtes, comment vous travaillez.</small></div>
     </div>
     <div class="revele">
-      <p class="surtitre">Un interlocuteur, du premier appel aux clés</p>
-      <h2>Vous parlez à la même personne du début à la fin.</h2>
-      <p class="chapo">Pas de plateforme ni de conseiller qui change à chaque appel. Je connais votre dossier, je relance les banques et je vous explique chaque offre avant que vous la signiez.</p>
-      <p class="signature-nom">Daniel B.</p>
+      <p class="surtitre">Un ancien banquier de votre côté</p>
+      <h2>Je sais comment une banque lit votre dossier.</h2>
+      <p class="chapo">Pendant 18 ans, j'étais de l'autre côté du bureau. Je sais ce qui fait accepter un dossier, ce qui le bloque, et comment le présenter. Et vous gardez un seul interlocuteur, du premier appel à la remise des clés.</p>
+      <p class="signature-nom">Daniel Barcelo</p>
     </div>
   </div>
 </section>
@@ -129,12 +131,13 @@ ACCUEIL = f'''
 <section class="section section-blanche">
   <div class="conteneur">
     <div class="tete-section revele">
-      <div><p class="surtitre">Votre projet</p><h2>Trois situations, trois façons de monter le dossier.</h2></div>
-      <p>Un premier achat, un investissement locatif ou un prêt déjà en cours ne se défendent pas avec les mêmes arguments devant une banque.</p>
+      <div><p class="surtitre">Votre projet</p><h2>Chaque profil se défend avec ses propres arguments.</h2></div>
+      <p>Un premier achat, un investissement, un projet après 50 ans ou un prêt déjà en cours ne se présentent pas de la même façon à une banque.</p>
     </div>
     <div class="profils">
       <a class="profil revele" href="prets.html#residence"><img src="photos/couple-vide.webp" alt="Un couple assis dans le salon vide de leur nouveau logement" loading="lazy"><div><h3>Premier achat</h3><p>Apport, prêt à taux zéro, prêts aidés : je construis le plan de financement qui passe.</p><span class="lien">Acheter sa résidence →</span></div></a>
       <a class="profil revele" href="prets.html#investissement"><img src="photos/mas.webp" alt="Un mas en pierre au pied des montagnes" loading="lazy"><div><h3>Investissement locatif</h3><p>Les loyers attendus, la durée et l'effort mensuel présentés comme une banque veut les lire.</p><span class="lien">Investir →</span></div></a>
+      <a class="profil revele" href="prets.html#seniors"><img src="photos/seniors.webp" alt="Un couple de retraités consulte un ordinateur dans leur salon" loading="lazy"><div><h3>Séniors</h3><p>Après 50 ou 60 ans, c'est souvent l'assurance qui bloque. Je trouve celle qui accepte votre profil.</p><span class="lien">Emprunter après 50 ans →</span></div></a>
       <a class="profil revele" href="prets.html#renegociation"><img src="photos/maquette.webp" alt="Une maquette de maison posée près d'une calculatrice" loading="lazy"><div><h3>Prêt en cours</h3><p>Renégociation, rachat par une autre banque ou changement d'assurance : on calcule si ça vaut le coup.</p><span class="lien">Faire baisser mon prêt →</span></div></a>
     </div>
   </div>
@@ -143,9 +146,9 @@ ACCUEIL = f'''
 <section class="bandeau-local">
   <video data-ambiance autoplay muted loop playsinline preload="metadata" poster="videos/vercors.webp" aria-hidden="true"><source src="videos/vercors.mp4" type="video/mp4"></video>
   <div class="conteneur revele">
-    <p class="surtitre" style="color:#c9c2f2">Ici, entre Rhône et Vercors</p>
-    <h2>Je connais les banques de Valence, et les prix de la Drôme.</h2>
-    <div class="communes"><span>Valence</span><span>Bourg-lès-Valence</span><span>Guilherand-Granges</span><span>Portes-lès-Valence</span><span>Romans-sur-Isère</span><span>Crest</span><span>Tournon-sur-Rhône</span><span>Montélimar</span></div>
+    <p class="surtitre" style="color:#c9c2f2">Entre Rhône et Vercors, et partout en France</p>
+    <h2>Rendez-vous à Valence, ou en visio où que vous soyez.</h2>
+    <div class="communes"><span>Valence</span><span>Bourg-lès-Valence</span><span>Guilherand-Granges</span><span>Portes-lès-Valence</span><span>Romans-sur-Isère</span><span>Crest</span><span>Tournon-sur-Rhône</span><span>Montélimar</span><span>Partout en France, à distance</span></div>
   </div>
 </section>
 
@@ -154,7 +157,7 @@ ACCUEIL = f'''
     <p class="surtitre">Premier échange offert</p>
     <h2>Racontez-moi votre projet, je vous dis ce qui est faisable.</h2>
     <p>Une demi-heure au téléphone ou en visio, sans engagement. Mes honoraires ne sont dus qu'une fois votre prêt obtenu.</p>
-    <a class="bouton bouton-lavande" href="contact.html">Demander un rappel</a>
+    <div class="heros-actions" style="justify-content:center;margin-top:0"><a class="bouton bouton-lavande" href="contact.html">Demander un rappel</a><a class="bouton bouton-clair" href="tel:+33775663739">07 75 66 37 39</a></div>
   </div>
 </section>
 '''
@@ -163,7 +166,7 @@ PRETS = f'''
 <section class="tete-page">
   <div class="conteneur">
     <div class="revele"><p class="surtitre">Les prêts</p><h1>Chaque projet a son montage.</h1></div>
-    <p class="chapo revele">Résidence principale, investissement, rachat ou assurance : voici comment je présente chaque dossier aux banques pour obtenir les meilleures conditions.</p>
+    <p class="chapo revele">Résidence principale, investissement, projet après 50 ans, rachat ou assurance : voici comment je présente chaque dossier aux banques pour obtenir les meilleures conditions.</p>
   </div>
 </section>
 <div class="conteneur">
@@ -183,6 +186,15 @@ PRETS = f'''
       <h2>Investir sans vous asphyxier chaque mois.</h2>
       <p>Les banques regardent votre taux d'endettement et les loyers attendus. Je prépare un dossier qui montre un projet rentable et maîtrisé.</p>
       <ul class="points"><li>Prise en compte des loyers selon les règles de chaque banque</li><li>Durée et différé choisis selon votre effort d'épargne</li><li>Location nue, meublée ou petit immeuble de rapport</li></ul>
+    </div>
+  </section>
+  <section class="bloc-pret" id="seniors">
+    <div class="bloc-pret-photo rideau"><img src="photos/seniors-jardin.webp" alt="Un couple de retraités se promène dans un jardin" loading="lazy"></div>
+    <div class="revele">
+      <p class="surtitre">Séniors</p>
+      <h2>Emprunter après 50 ans, sans buter sur l'assurance.</h2>
+      <p>Passé un certain âge, ce n'est souvent pas la banque qui dit non, c'est l'assurance : limites d'âge, questionnaire de santé, surprimes. Je cherche les contrats qui acceptent votre profil, à des conditions raisonnables.</p>
+      <ul class="points"><li>Résidence principale, secondaire ou investissement après 50 ans</li><li>Questionnaire de santé supprimé sous conditions (loi Lemoine)</li><li>Durée du prêt calée sur votre projet de retraite</li></ul>
     </div>
   </section>
   <section class="bloc-pret" id="renegociation">
@@ -271,8 +283,8 @@ ACCOMP = f'''
 QUI = '''
 <section class="tete-page">
   <div class="conteneur">
-    <div class="revele"><p class="surtitre">Qui suis-je</p><h1>Daniel B., courtier à Valence.</h1></div>
-    <p class="chapo revele">Mon métier : défendre votre dossier devant les banques, pour que votre projet passe aux meilleures conditions.</p>
+    <div class="revele"><p class="surtitre">Qui suis-je</p><h1>18 ans de banque, aujourd'hui courtier.</h1></div>
+    <p class="chapo revele">Je m'appelle Daniel Barcelo. Après 18 ans en banque, j'ai choisi de passer de votre côté du bureau.</p>
   </div>
 </section>
 <section class="section">
@@ -282,17 +294,18 @@ QUI = '''
       <div><strong>Votre portrait</strong><small>Une photo de vous, dans votre bureau ou dans Valence.</small></div>
     </div>
     <div class="presentation-texte revele">
-      <p>Acheter un logement, c'est souvent la plus grosse décision financière d'une vie. Pourtant, beaucoup d'emprunteurs signent la première offre de leur banque, faute de temps ou de points de comparaison.</p>
-      <p>Mon rôle est de faire ce travail à votre place : comprendre votre situation, monter un dossier clair, le présenter aux banques qui correspondent à votre profil, puis négocier chaque ligne de l'offre.</p>
+      <p>Pendant 18 ans, j'ai travaillé en banque. J'y ai appris de l'intérieur ce qui fait la différence sur un prêt immobilier : un budget bien construit, un dossier clair, et les bons arguments présentés au bon interlocuteur.</p>
+      <p>Aujourd'hui, je mets cette expérience à votre service. Je vous aide à trouver le partenaire bancaire qui vous fera la meilleure offre, j'optimise avec vous votre budget d'achat et je vous décharge des démarches administratives jusqu'à la signature chez le notaire. Je sélectionne aussi pour vous la meilleure assurance emprunteur.</p>
       <p class="citation">« Je préfère vous dire non tout de suite que vous faire perdre trois mois. »</p>
-      <p><span class="a-completer">À compléter avec Daniel</span> : son parcours, depuis quand il exerce, ce qui l'a amené au courtage.</p>
+      <p>Primo-accédants, investisseurs, séniors : j'accompagne tous les profils, à Valence ou à distance, partout en France.</p>
     </div>
   </div>
 </section>
 <section class="section section-blanche">
   <div class="conteneur">
-    <div class="tete-section revele"><div><p class="surtitre">Ma façon de travailler</p><h2>Trois engagements</h2></div><p>Ce que vous pouvez attendre de moi, à chaque étape du dossier.</p></div>
+    <div class="tete-section revele"><div><p class="surtitre">Ma façon de travailler</p><h2>Quatre engagements</h2></div><p>Ce que vous pouvez attendre de moi, à chaque étape du dossier.</p></div>
     <div class="valeurs">
+      <div class="revele"><h3>Je parle le langage des banques</h3><p>18 ans à monter et à étudier des dossiers de prêt : je sais ce qu'un comité de crédit veut lire.</p></div>
       <div class="revele"><h3>Je vous dis la vérité</h3><p>Si votre projet ne passe pas en l'état, je vous l'explique, et je vous dis ce qu'il faut changer pour qu'il passe.</p></div>
       <div class="revele"><h3>Je reste joignable</h3><p>Un numéro, une personne. Vous savez toujours où en est votre dossier.</p></div>
       <div class="revele"><h3>Je compare le coût total</h3><p>Taux, assurance, frais et garantie : je recommande l'offre la moins chère sur toute la durée, pas seulement le plus beau taux.</p></div>
@@ -328,12 +341,12 @@ CONTACT = '''
     <div class="champ"><label for="f-mail">E-mail</label><input id="f-mail" name="email" type="email" autocomplete="email"></div>
     <div class="champ"><label for="f-montant">Montant envisagé</label><select id="f-montant" name="montant"><option>Je ne sais pas encore</option><option>Moins de 150 000 €</option><option>150 000 à 300 000 €</option><option>Plus de 300 000 €</option></select></div>
     <div class="champ champ-large"><label for="f-msg">Votre projet en quelques mots</label><textarea id="f-msg" name="message" rows="5" placeholder="Ville, type de bien, apport, date souhaitée…"></textarea></div>
-    <label class="consentement"><input type="checkbox" required> J'accepte que Daniel B. utilise ces informations pour me recontacter au sujet de mon projet. Elles ne sont transmises à aucun tiers sans mon accord.</label>
+    <label class="consentement"><input type="checkbox" required> J'accepte que Daniel Barcelo utilise ces informations pour me recontacter au sujet de mon projet. Elles ne sont transmises à aucun tiers sans mon accord.</label>
     <button class="bouton bouton-lavande" type="submit">Envoyer ma demande</button>
   </form>
   <aside class="coordonnees revele">
-    <div><h3>Par téléphone</h3><p><span class="a-completer">Numéro à ajouter</span><br>Du lundi au samedi</p></div>
-    <div><h3>Rendez-vous</h3><p>À Valence, chez vous ou en visio. Partout dans la Drôme et l'Ardèche.</p></div>
+    <div><h3>Par téléphone</h3><p><a href="tel:+33775663739">07 75 66 37 39</a><br>Si je suis en rendez-vous, laissez un message : je vous rappelle dans la journée.</p></div>
+    <div><h3>Rendez-vous</h3><p>À Valence, chez vous ou en visio, partout en France.</p></div>
     <div><h3>Honoraires</h3><p>Premier échange offert. Rien à payer avant l'obtention de votre prêt.</p></div>
     <div class="bloc-pret-photo rideau" style="aspect-ratio:4/3"><img src="photos/maison-rose.webp" alt="Une maison aux volets pastel" loading="lazy"></div>
   </aside>
@@ -341,11 +354,11 @@ CONTACT = '''
 '''
 
 PAGES = [
-    ('index.html', 'Daniel B. | Courtier en prêt immobilier à Valence', 'Courtier en prêt immobilier à Valence : je mets les banques en concurrence et je négocie taux, assurance et frais pour votre projet.', ACCUEIL),
-    ('prets.html', 'Prêts immobiliers | Daniel B., courtier à Valence', 'Résidence principale, investissement locatif, renégociation, assurance emprunteur : le montage adapté à chaque projet.', PRETS),
-    ('accompagnement.html', 'Accompagnement | Daniel B., courtier à Valence', "Les six étapes d'un prêt immobilier avec Daniel B., du premier échange à la signature chez le notaire.", ACCOMP),
-    ('qui-suis-je.html', 'Qui suis-je | Daniel B., courtier à Valence', 'Daniel B., courtier en prêt immobilier à Valence : ma façon de travailler.', QUI),
-    ('contact.html', 'Contact | Daniel B., courtier à Valence', 'Demandez un rappel : premier échange offert, rien à payer avant l\'obtention de votre prêt.', CONTACT),
+    ('index.html', 'Daniel Barcelo | Courtier en prêt immobilier à Valence', 'Daniel Barcelo, courtier en prêt immobilier à Valence après 18 ans en banque : meilleur taux, assurance emprunteur, accompagnement jusqu\'au notaire, à distance partout en France.', ACCUEIL),
+    ('prets.html', 'Prêts immobiliers | Daniel Barcelo, courtier à Valence', 'Résidence principale, investissement locatif, renégociation, assurance emprunteur : le montage adapté à chaque projet.', PRETS),
+    ('accompagnement.html', 'Accompagnement | Daniel Barcelo, courtier à Valence', "Les six étapes d'un prêt immobilier avec Daniel Barcelo, du premier échange à la signature chez le notaire.", ACCOMP),
+    ('qui-suis-je.html', 'Qui suis-je | Daniel Barcelo, courtier à Valence', 'Daniel Barcelo, courtier en prêt immobilier à Valence : ma façon de travailler.', QUI),
+    ('contact.html', 'Contact | Daniel Barcelo, courtier à Valence', 'Demandez un rappel : premier échange offert, rien à payer avant l\'obtention de votre prêt.', CONTACT),
 ]
 for f, t, d, c in PAGES:
     open(os.path.join(ICI, f), 'w', encoding='utf-8', newline='\n').write(page(f, t, d, c))
