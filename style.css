@@ -1,0 +1,263 @@
+/* Daniel B. — courtier en prêt immobilier, Valence. Aperçu LocWeb. */
+:root {
+  --nuit: #1c2733;      /* encre ardoise : titres, fonds sombres */
+  --encre: #3d4a58;     /* texte courant */
+  --gris: #6b7684;      /* texte secondaire */
+  --papier: #f6f5f1;    /* fond */
+  --pierre: #e2ddd1;    /* calcaire de la Drôme : filets, cartes */
+  --lavande: #6f63b8;   /* l'accent, utilisé avec retenue */
+  --lavande-pale: #ebe8f6;
+  --blanc: #fff;
+  --r: 14px;
+  --serif: 'Young Serif', Georgia, serif;
+  --sans: 'Onest', system-ui, sans-serif;
+}
+* { box-sizing: border-box; margin: 0 }
+html { scroll-behavior: smooth }
+body { font: 17px/1.6 var(--sans); color: var(--encre); background: var(--papier); -webkit-font-smoothing: antialiased }
+img { display: block; max-width: 100%; height: auto }
+a { color: inherit }
+h1, h2, h3 { font-family: var(--serif); font-weight: 400; color: var(--nuit); line-height: 1.12; text-wrap: balance }
+h1 { font-size: clamp(38px, 5.4vw, 66px); letter-spacing: -.01em }
+h2 { font-size: clamp(30px, 3.6vw, 44px) }
+h3 { font-size: 23px }
+p { max-width: 62ch }
+.conteneur { width: min(1180px, 100% - 40px); margin-inline: auto }
+.surtitre { font-size: 13px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--lavande); margin-bottom: 14px }
+.chapo { font-size: 19px; color: var(--encre); margin-top: 18px }
+:focus-visible { outline: 3px solid var(--lavande); outline-offset: 3px; border-radius: 4px }
+
+/* Bandeau aperçu */
+.apercu { background: var(--nuit); color: #cfd6df; font-size: 13px; text-align: center; padding: 7px 16px }
+.apercu b { color: #fff; font-weight: 600 }
+
+/* En-tête */
+.entete { position: sticky; top: 0; z-index: 20; background: rgba(246,245,241,.92); backdrop-filter: blur(10px); border-bottom: 1px solid var(--pierre) }
+.entete .conteneur { display: flex; align-items: center; gap: 28px; height: 74px }
+.marque { text-decoration: none; display: grid; line-height: 1.15 }
+.marque b { font-family: var(--serif); font-weight: 400; font-size: 24px; color: var(--nuit) }
+.marque small { font-size: 12.5px; color: var(--gris); letter-spacing: .02em }
+.nav { display: flex; gap: 26px; margin-left: auto }
+.nav a { text-decoration: none; font-size: 15.5px; color: var(--encre); padding: 6px 0; border-bottom: 2px solid transparent }
+.nav a:hover { color: var(--nuit) }
+.nav a[aria-current] { color: var(--nuit); border-color: var(--lavande) }
+.bouton { display: inline-flex; align-items: center; gap: 10px; justify-content: center; font: 600 15.5px/1 var(--sans); text-decoration: none; padding: 15px 22px; border-radius: 999px; background: var(--nuit); color: #fff; border: 0; cursor: pointer; transition: background .2s }
+.bouton:hover { background: #2b3a4b }
+.bouton-clair { background: transparent; color: var(--nuit); box-shadow: inset 0 0 0 1.5px var(--nuit) }
+.bouton-clair:hover { background: var(--nuit); color: #fff }
+.bouton-lavande { background: var(--lavande) }
+.bouton-lavande:hover { background: #5d52a3 }
+.entete .bouton { padding: 12px 18px; font-size: 14.5px }
+.burger { display: none; margin-left: auto; width: 44px; height: 44px; border: 0; background: none; cursor: pointer }
+.burger span { display: block; width: 22px; height: 2px; background: var(--nuit); margin: 5px auto; transition: transform .2s }
+
+/* Héros : la remise des clés en vidéo, le calcul par-dessus */
+.heros { position: relative; min-height: min(88vh, 820px); display: grid; align-items: center; padding: 90px 0 70px; overflow: hidden; background: var(--nuit) }
+.heros-fond { position: absolute; inset: 0 }
+.heros-fond video, .heros-fond img { width: 100%; height: 100%; object-fit: cover; animation: approche 18s ease-out both }
+.heros-fond::after { content: ''; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(20,28,37,.9) 0%, rgba(20,28,37,.66) 48%, rgba(20,28,37,.25) 100%) }
+@keyframes approche { from { transform: scale(1.08) } to { transform: scale(1) } }
+.heros .conteneur { position: relative; display: grid; grid-template-columns: 1.1fr 1fr; gap: 64px; align-items: center }
+.heros h1 { color: #fff }
+.heros h1 em { font-style: normal; color: #c9c2f2 }
+.heros .surtitre { color: #c9c2f2 }
+.heros-texte .chapo { max-width: 46ch; color: #d3d9e1 }
+.heros-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 32px }
+.heros .bouton-clair { color: #fff; box-shadow: inset 0 0 0 1.5px rgba(255,255,255,.7) }
+.heros .bouton-clair:hover { background: #fff; color: var(--nuit) }
+.entree > * { opacity: 0; transform: translateY(22px); animation: monte .9s cubic-bezier(.2,.7,.2,1) forwards }
+.entree > :nth-child(2) { animation-delay: .12s } .entree > :nth-child(3) { animation-delay: .24s } .entree > :nth-child(4) { animation-delay: .36s }
+.calcul.entree-carte { opacity: 0; transform: translateY(30px); animation: monte 1s .45s cubic-bezier(.2,.7,.2,1) forwards }
+@keyframes monte { to { opacity: 1; transform: none } }
+@media (prefers-reduced-motion: reduce) { .heros-fond video, .heros-fond img, .entree > *, .calcul.entree-carte { animation: none; opacity: 1; transform: none } }
+
+/* La carte de calcul : l'élément signature */
+.calcul { background: var(--blanc); border-radius: 20px; padding: 34px; box-shadow: 0 1px 0 var(--pierre), 0 24px 60px -30px rgba(28,39,51,.35) }
+.calcul h2 { font-size: 26px; margin-bottom: 26px }
+.curseur { margin-bottom: 22px }
+.curseur label { display: flex; justify-content: space-between; align-items: baseline; font-size: 15px; color: var(--gris); margin-bottom: 10px }
+.curseur output { font: 600 19px/1 var(--sans); color: var(--nuit); font-variant-numeric: tabular-nums }
+input[type=range] { -webkit-appearance: none; appearance: none; width: 100%; height: 6px; border-radius: 6px; background: linear-gradient(var(--lavande), var(--lavande)) 0/var(--p, 50%) 100% no-repeat, var(--pierre); cursor: pointer }
+input[type=range]::-webkit-slider-thumb { -webkit-appearance: none; width: 24px; height: 24px; border-radius: 50%; background: var(--blanc); border: 2px solid var(--lavande); box-shadow: 0 2px 6px rgba(0,0,0,.15) }
+input[type=range]::-moz-range-thumb { width: 22px; height: 22px; border-radius: 50%; background: var(--blanc); border: 2px solid var(--lavande) }
+.resultat { margin-top: 28px; padding-top: 24px; border-top: 1px solid var(--pierre); display: grid; grid-template-columns: 1fr auto; gap: 6px 20px; align-items: end }
+.resultat-libelle { font-size: 15px; color: var(--gris) }
+.resultat-chiffre { font-family: var(--serif); font-size: clamp(44px, 5vw, 58px); line-height: 1; color: var(--nuit); font-variant-numeric: tabular-nums; grid-row: 2 }
+.resultat-chiffre small { font-family: var(--sans); font-size: 18px; color: var(--gris) }
+.resultat-cout { grid-row: 1 / 3; grid-column: 2; text-align: right; font-size: 14px; color: var(--gris) }
+.resultat-cout b { display: block; font-size: 18px; color: var(--encre); font-variant-numeric: tabular-nums }
+.gain { margin-top: 20px; background: var(--lavande-pale); color: #3b3270; border-radius: 12px; padding: 14px 16px; font-size: 15px; line-height: 1.45 }
+.gain b { font-variant-numeric: tabular-nums }
+.avertissement { font-size: 12.5px; color: var(--gris); margin-top: 16px; line-height: 1.45 }
+
+/* Sections */
+.section { padding: 96px 0 }
+.section-blanche { background: var(--blanc) }
+.section-sombre { background: var(--nuit); color: #c9d1db }
+.section-sombre h2, .section-sombre h3 { color: #fff }
+.section-sombre .surtitre { color: #b5aeea }
+.tete-section { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: end; margin-bottom: 52px }
+.tete-section p { color: var(--gris) }
+.section-sombre .tete-section p { color: #aeb8c4 }
+
+/* Leviers négociés */
+.leviers { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--pierre); border: 1px solid var(--pierre); border-radius: var(--r); overflow: hidden }
+.levier { background: var(--blanc); padding: 30px 26px 34px }
+.levier-mot { font-family: var(--serif); font-size: 30px; color: var(--lavande); line-height: 1; margin-bottom: 14px }
+.levier h3 { font-size: 20px; margin-bottom: 8px }
+.levier p { font-size: 15.5px; color: var(--gris) }
+
+/* Emplacements photo / vidéo du courtier */
+.media-perso { display: grid; grid-template-columns: 1.4fr 1fr; gap: 56px; align-items: center }
+.cadre-video, .cadre-portrait { position: relative; border-radius: var(--r); overflow: hidden; background: #26323f; display: grid; place-items: center; text-align: center; color: #c9d1db }
+.cadre-video { aspect-ratio: 16/9 }
+.cadre-video img, .cadre-portrait img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: .38 }
+.cadre-video > div, .cadre-portrait > div { position: relative; padding: 24px }
+.lecture { width: 78px; height: 78px; border-radius: 50%; background: var(--blanc); display: grid; place-items: center; margin: 0 auto 16px; box-shadow: 0 10px 30px rgba(0,0,0,.3) }
+.lecture::before { content: ''; border-left: 22px solid var(--nuit); border-top: 14px solid transparent; border-bottom: 14px solid transparent; margin-left: 6px }
+.cadre-video strong, .cadre-portrait strong { display: block; color: #fff; font-weight: 600; font-size: 17px }
+.cadre-video small, .cadre-portrait small { font-size: 14px }
+.cadre-portrait { aspect-ratio: 4/5 }
+.signature-nom { font-family: var(--serif); font-size: 24px; color: var(--nuit); margin-top: 22px }
+
+/* Profils */
+.profils { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px }
+.profil { background: var(--blanc); border-radius: var(--r); overflow: hidden; text-decoration: none; display: flex; flex-direction: column; transition: transform .25s, box-shadow .25s }
+.profil:hover { transform: translateY(-4px); box-shadow: 0 20px 40px -24px rgba(28,39,51,.4) }
+.profil img { aspect-ratio: 4/3; object-fit: cover; width: 100% }
+.profil div { padding: 24px 24px 28px }
+.profil h3 { margin-bottom: 8px }
+.profil p { font-size: 15.5px; color: var(--gris) }
+.profil .lien { margin-top: 14px; font-weight: 600; font-size: 15px; color: var(--lavande) }
+
+/* Bandeau Drôme */
+.bandeau-local { position: relative; min-height: 520px; display: grid; align-items: end; color: #fff; overflow: hidden }
+.bandeau-local > img, .bandeau-local > video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover }
+.bandeau-local::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(28,39,51,0) 30%, rgba(28,39,51,.82)) }
+.bandeau-local .conteneur { position: relative; z-index: 1; padding: 0 0 64px }
+.bandeau-local h2 { color: #fff; max-width: 18ch }
+.communes { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 24px }
+.communes span { font-size: 14px; padding: 7px 14px; border-radius: 999px; background: rgba(255,255,255,.14); backdrop-filter: blur(6px) }
+.credit-photo { position: absolute; right: 14px; bottom: 10px; z-index: 1; font-size: 11px; opacity: .6 }
+
+/* Appel à l'action */
+.appel { text-align: center; display: grid; justify-items: center; gap: 18px }
+.appel p { color: var(--gris) }
+
+/* Pages intérieures */
+.tete-page { padding: 64px 0 56px; border-bottom: 1px solid var(--pierre) }
+.tete-page .conteneur { display: grid; grid-template-columns: 1.2fr 1fr; gap: 56px; align-items: end }
+.tete-page .chapo { color: var(--gris) }
+.bloc-pret { display: grid; grid-template-columns: 1fr 1.1fr; gap: 64px; align-items: center; padding: 72px 0; border-bottom: 1px solid var(--pierre) }
+.bloc-pret:nth-of-type(even) .bloc-pret-photo { order: 2 }
+.bloc-pret-photo { border-radius: var(--r); overflow: hidden; aspect-ratio: 5/4 }
+.bloc-pret-photo img { width: 100%; height: 100%; object-fit: cover }
+.bloc-pret h2 { font-size: clamp(28px, 3vw, 38px); margin-bottom: 16px }
+.points { list-style: none; padding: 0; margin-top: 20px; display: grid; gap: 10px }
+.points li { padding-left: 26px; position: relative; font-size: 16px }
+.points li::before { content: ''; position: absolute; left: 0; top: .62em; width: 12px; height: 2px; background: var(--lavande) }
+
+/* Étapes : une vraie suite, donc numérotée */
+.etapes { list-style: none; padding: 0; counter-reset: e; display: grid; gap: 0 }
+.etape { counter-increment: e; display: grid; grid-template-columns: 90px 1fr 1.1fr; gap: 32px; padding: 34px 0; border-top: 1px solid var(--pierre); align-items: baseline }
+.etape::before { content: counter(e); font-family: var(--serif); font-size: 46px; line-height: 1; color: var(--lavande) }
+.etape h3 { font-size: 24px }
+.etape p { color: var(--gris); font-size: 16px }
+.etape .duree { display: block; font-size: 13px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--encre); margin-top: 8px; font-family: var(--sans) }
+.pieces { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px }
+.piece { border-top: 2px solid var(--lavande); padding-top: 18px }
+.piece h3 { font-size: 20px; margin-bottom: 10px }
+.piece ul { padding-left: 18px; font-size: 15.5px; color: #c9d1db; display: grid; gap: 4px }
+.encart { background: var(--lavande-pale); border-radius: var(--r); padding: 34px 38px; display: grid; grid-template-columns: auto 1fr; gap: 28px; align-items: center }
+.encart-mot { font-family: var(--serif); font-size: 64px; line-height: 1; color: var(--lavande) }
+.encart h3 { margin-bottom: 6px }
+
+/* Capacité d'emprunt */
+.capacite { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center }
+.capacite .calcul { box-shadow: none; border: 1px solid var(--pierre) }
+
+/* Qui suis-je */
+.presentation { display: grid; grid-template-columns: .8fr 1.2fr; gap: 64px; align-items: start }
+.presentation-texte p + p { margin-top: 16px }
+.citation { font-family: var(--serif); font-size: clamp(24px, 2.6vw, 32px); line-height: 1.3; color: var(--nuit); border-left: 3px solid var(--lavande); padding-left: 26px; margin: 34px 0 }
+.valeurs { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px }
+.valeurs h3 { font-size: 22px; margin-bottom: 8px }
+.valeurs p { color: var(--gris); font-size: 16px }
+
+/* Contact */
+.contact { display: grid; grid-template-columns: 1.25fr .75fr; gap: 56px; align-items: start; padding: 64px 0 96px }
+.formulaire { background: var(--blanc); border-radius: 20px; padding: 36px; display: grid; grid-template-columns: 1fr 1fr; gap: 18px 20px }
+.champ { display: grid; gap: 7px }
+.champ-large { grid-column: 1 / -1 }
+.champ label, .champ legend { font-size: 14.5px; font-weight: 600; color: var(--nuit) }
+.champ input, .champ select, .champ textarea { font: 16px/1.4 var(--sans); color: var(--nuit); padding: 13px 14px; border: 1.5px solid var(--pierre); border-radius: 10px; background: var(--papier); width: 100% }
+.champ input:focus, .champ select:focus, .champ textarea:focus { outline: none; border-color: var(--lavande); background: #fff }
+.choix-projet { border: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; grid-column: 1 / -1 }
+.choix-projet legend { margin-bottom: 10px }
+.choix-projet label { font-size: 15px; font-weight: 500; padding: 10px 16px; border-radius: 999px; border: 1.5px solid var(--pierre); cursor: pointer; color: var(--encre) }
+.choix-projet input { position: absolute; opacity: 0; pointer-events: none }
+.choix-projet input:checked + span { color: var(--nuit) }
+.choix-projet label:has(input:checked) { border-color: var(--lavande); background: var(--lavande-pale); color: var(--nuit) }
+.choix-projet label:has(input:focus-visible) { outline: 3px solid var(--lavande); outline-offset: 2px }
+.consentement { grid-column: 1 / -1; display: flex; gap: 10px; font-size: 13.5px; color: var(--gris); align-items: flex-start }
+.consentement input { margin-top: 4px; accent-color: var(--lavande) }
+.formulaire .bouton { grid-column: 1 / -1; justify-self: start }
+.merci { grid-column: 1 / -1; background: var(--lavande-pale); color: #3b3270; border-radius: 12px; padding: 16px 18px; font-size: 15px }
+.coordonnees { display: grid; gap: 28px }
+.coordonnees h3 { font-size: 20px; margin-bottom: 6px }
+.coordonnees p { color: var(--gris); font-size: 16px }
+.coordonnees a { color: var(--nuit); font-weight: 600 }
+.a-completer { display: inline-block; font-size: 13px; color: #3b3270; background: var(--lavande-pale); padding: 3px 9px; border-radius: 6px; font-weight: 500 }
+
+/* Pied de page avec mentions obligatoires d'un intermédiaire en crédit */
+.pied { background: var(--nuit); color: #aeb8c4; font-size: 14.5px; padding: 64px 0 36px }
+.pied-haut { display: grid; grid-template-columns: 1.3fr 1fr 1fr; gap: 40px; padding-bottom: 40px; border-bottom: 1px solid #2f3d4d }
+.pied .marque b { color: #fff }
+.pied .marque small { color: #8c98a6 }
+.pied h4 { color: #fff; font-size: 14px; letter-spacing: .08em; text-transform: uppercase; margin-bottom: 14px; font-weight: 600 }
+.pied ul { list-style: none; padding: 0; display: grid; gap: 8px }
+.pied a { text-decoration: none }
+.pied a:hover { color: #fff }
+.mentions { padding-top: 28px; display: grid; gap: 10px; font-size: 13px; line-height: 1.55; color: #8c98a6 }
+.mentions strong { color: #d6dce3; font-weight: 600 }
+
+/* Apparition douce ; les photos se découvrent comme un rideau */
+.js .rideau { clip-path: inset(0 0 100% 0); transition: clip-path 1.1s cubic-bezier(.7,0,.2,1) }
+.js .rideau.vu { clip-path: inset(0 0 0 0) }
+.js .rideau img { transform: scale(1.12); transition: transform 1.6s cubic-bezier(.2,.7,.2,1) }
+.js .rideau.vu img { transform: none }
+@media (prefers-reduced-motion: reduce) { .js .rideau, .js .rideau img { clip-path: none; transform: none; transition: none } }
+.js .revele { opacity: 0; transform: translateY(18px); transition: opacity .7s ease, transform .7s ease }
+.js .revele.vu { opacity: 1; transform: none }
+.js .tete-page .revele { opacity: 0; transform: translateY(22px); transition: none; animation: monte .9s .05s cubic-bezier(.2,.7,.2,1) forwards }
+.js .tete-page .revele + .revele { animation-delay: .2s }
+@media (prefers-reduced-motion: reduce) { .js .revele, .js .tete-page .revele { opacity: 1; transform: none; transition: none; animation: none } html { scroll-behavior: auto } .profil { transition: none } }
+
+/* Responsive */
+@media (max-width: 1020px) {
+  .nav, .entete .bouton { display: none }
+  .burger { display: block }
+  .entete.ouvert .nav { display: flex; flex-direction: column; gap: 0; position: absolute; top: 74px; left: 0; right: 0; background: var(--papier); border-bottom: 1px solid var(--pierre); padding: 8px 20px 18px }
+  .entete.ouvert .nav a { padding: 14px 0; border-bottom: 1px solid var(--pierre); font-size: 17px }
+  .heros .conteneur, .tete-page .conteneur, .media-perso, .bloc-pret, .capacite, .presentation, .contact, .tete-section { grid-template-columns: 1fr }
+  .bloc-pret:nth-of-type(even) .bloc-pret-photo { order: 0 }
+  .leviers { grid-template-columns: 1fr 1fr }
+  .profils, .valeurs, .pieces { grid-template-columns: 1fr }
+  .pied-haut { grid-template-columns: 1fr }
+  .etape { grid-template-columns: 60px 1fr; gap: 8px 20px }
+  .etape p { grid-column: 2 }
+  .presentation .cadre-portrait { max-width: 420px }
+}
+@media (max-width: 600px) {
+  body { font-size: 16px }
+  .section { padding: 68px 0 }
+  .heros { padding: 32px 0 56px }
+  .calcul, .formulaire { padding: 24px 20px }
+  .formulaire { grid-template-columns: 1fr }
+  .leviers { grid-template-columns: 1fr }
+  .resultat { grid-template-columns: 1fr }
+  .resultat-cout { grid-row: auto; grid-column: auto; text-align: left }
+  .encart { grid-template-columns: 1fr; padding: 26px 22px }
+  .bandeau-local { min-height: 460px }
+  .marque small { display: none }
+}
